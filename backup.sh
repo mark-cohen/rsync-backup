@@ -8,7 +8,7 @@
 
 # set rsync location
 RSYNC_BIN="/usr/local/bin/rsync"
-# set location for log archives 
+# set log archives location 
 LOG_DIR="/Library/Logs/backup-log-archive/"
 # set name/format of time stamped log file 
 LOGNAME=rsync-`date +%Y-%m-%d-%T`.log
@@ -16,11 +16,8 @@ LOGNAME=rsync-`date +%Y-%m-%d-%T`.log
 SOURCE_DIR="/Volumes/Storage/"
 # define backup destination 
 BACKUP_DIR="/Volumes/Backup/"
-# define exclude file 
+# set exclude file location
 EXCLUDE="/Library/Scripts/Backup/rsync_excludes.txt"
-
-# define how many backups to keep
-# KEEP_BACKUPS=7
 
 if [ ! -d "$LOG_DIR" ]; then
 mkdir $LOG_DIR
