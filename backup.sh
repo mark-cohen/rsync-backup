@@ -18,6 +18,8 @@ SOURCE_DIR="/Volumes/Storage/"
 BACKUP_DIR="/Volumes/Backup/"
 # set exclude file location
 EXCLUDE="/Library/Scripts/Backup/rsync_excludes.txt"
+# set email notification address
+EMAIL="admin@org.ca"
 
 if [ ! -d "$LOG_DIR" ]; then
 mkdir $LOG_DIR
@@ -40,6 +42,6 @@ $SOURCE_DIR/ $BACKUP_DIR/ >> /Library/Logs/backup.log
 #### Stamp the log and send the notification ####
 echo Backup complete >> /Library/Logs/backup.log
 date >> /Library/Logs/backup.log
-# cat /Library/Logs/backup.log | mail -s "Client: Server - backup complete" admin@org.ca
+# cat /Library/Logs/backup.log | mail -s "Client: Server - backup complete" $EMAIL
 
 exit
