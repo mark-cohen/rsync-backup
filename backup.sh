@@ -21,7 +21,7 @@ EXCLUDE="/Library/Scripts/Backup/rsync_excludes.txt"
 # set email notification address
 EMAIL="admin@org.ca"
 
-# KEEP_BACKUPS=7
+# KEEP_BACKUPS=14
 
 if [ ! -d "$LOG_DIR" ]; then
 mkdir $LOG_DIR
