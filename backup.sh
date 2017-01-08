@@ -21,6 +21,8 @@ EXCLUDE="/Library/Scripts/Backup/rsync_excludes.txt"
 # set email notification address
 EMAIL="admin@org.ca"
 
+# KEEP_BACKUPS=14
+
 if [ ! -d "$LOG_DIR" ]; then
 mkdir $LOG_DIR
 fi
@@ -46,5 +48,13 @@ $SOURCE_DIR/ $BACKUP_DIR/ >> /Library/Logs/backup.log
 echo Backup complete >> /Library/Logs/backup.log
 date >> /Library/Logs/backup.log
 # cat /Library/Logs/backup.log | mail -s "Client: Server - backup complete" $EMAIL
+
+backups_count=ls -1 $BACKUP_DIR | wc -l
+backups_to_remove=$(($backups_count-$KEEP_BACKUPS))
+if [ $backups_to_remove -gt 0 ]; then
+for d in ls -1 $BACKUP_DIR | head -n$backups_to_remove; do
+docmd "rm -rf $BACKUP_DIR/$d"
+done
+fi
 
 exit
