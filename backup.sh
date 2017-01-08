@@ -28,6 +28,9 @@ fi
 cp /Library/Logs/backup.log $LOG_DIR/$LOGNAME
 rm -f /Library/Logs/backup.log  && touch /Library/Logs/backup.log
 
+#### Clean up backup logs ####
+find $LOG_DIR -mtime +14 -exec rm {} \;
+
 echo Backup started >> /Library/Logs/backup.log
 date >> /Library/Logs/backup.log
 
